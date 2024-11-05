@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <h1>Bienvenido</h1>
+    <div class="login-container">
+        <div>
+            <input id="username" type="text" placeholder="Type your name...">
+            <button id="trigger" onclick="saveUsername()">Send</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('trigger').addEventListener('click', () => {
+            const username = document.getElementById('username').value;
+            sessionStorage.setItem('username', username);
+            location.href = '/home';
+        });
+    </script>
+</body>
+</html>

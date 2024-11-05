@@ -1,4 +1,8 @@
-const socket = io('/');
+const username = sessionStorage.getItem('username');
+
+const socket = io('/', {
+    query: { username }
+});
 
 const roomID = window.location.href.split('/').pop()
 
