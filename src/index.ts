@@ -6,6 +6,7 @@ config();
 import path from 'path';
 import { Server } from 'socket.io';
 import session from 'express-session';
+import { timeStamp } from 'console';
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -75,7 +76,11 @@ io.on('connection', (socket) => {
         
         // io.emit()
         //socket.broadcast.emit(data);
-        socket.to('room-' + data.room).emit('messageReceived', data);
+        socket.to('room-' + data.room).emit('messageReceived', {
+            message: data.message,
+            username: data.username,
+            timestamp: data.timestamp
+        });
     });
 
     socket.on('disconnect', () => {
